@@ -44,7 +44,7 @@ class apache (
   if $::osfamily == 'redhat' or $::operatingsystem == 'amazon' {
     file {'httpd_vdir_conf':
       ensure  => present,
-      path    => $apache::params::confd,
+      path    => ${apache::params::confd}/vhosts.conf,
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
