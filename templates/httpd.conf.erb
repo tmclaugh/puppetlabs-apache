@@ -218,10 +218,19 @@ LoadModule version_module modules/mod_version.so
 # For use with puppetlabs-apache
 Include mod.d/*.load
 
+<% if scope.lookupvar('apache::params::confd') %>
 #
-# Load config files from the config directory "/etc/httpd/conf.d".
+# Load config files from the config directory "<%= scope.lookupvar('apache::params::confd') %>/conf.d".
 #
-Include conf.d/*.conf
+Include <%= scope.lookupvar('apache::params::confd') %>/*.conf
+<% end %>
+
+<% if scope.lookupvar('apache::params::vdir') %>
+#
+# Load config files from the vhost directory "<%= scope.lookupvar('apache::params::vdir') %>/vhosts.d".
+#
+Include <%= scope.lookupvar('apache::params::vdir') %>/*.conf
+<% end %>
 
 #
 # ExtendedStatus controls whether Apache will generate "full" status

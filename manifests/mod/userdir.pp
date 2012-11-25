@@ -4,7 +4,7 @@ class apache::mod::userdir (
   apache::mod { 'userdir': }
 
   # Template uses $dir
-  file { "${apache::params::vdir}/userdir.conf":
+  file { "${apache::params::confd}/userdir.conf":
     ensure  => present,
     content => template('apache/mod/userdir.conf.erb'),
   }

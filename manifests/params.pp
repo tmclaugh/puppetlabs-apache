@@ -44,8 +44,9 @@ class apache::params {
     $apache_dev            = 'httpd-devel'
     $httpd_dir             = '/etc/httpd'
     $conf_dir              = "${httpd_dir}/conf"
+    $confd                 = "${httpd_dir}/conf.d"
     $mod_dir               = "${httpd_dir}/mod.d"
-    $vdir                  = "${httpd_dir}/conf.d"
+    $vdir                  = "${httpd_dir}/vhosts.d"
     $conf_file             = 'httpd.conf'
     $mod_packages          = {
       'dev'        => 'httpd-devel',
@@ -75,7 +76,10 @@ class apache::params {
     $mod_wsgi_package      = 'libapache2-mod-wsgi'
     $mod_auth_kerb_package = 'libapache2-mod-auth-kerb'
     $apache_dev            = ['libaprutil1-dev', 'libapr1-dev', 'apache2-prefork-dev']
-    $vdir                  = '/etc/apache2/sites-enabled/'
+    $httpd_dir             = '/etc/apache2'
+    $confd                 = "${httpd_dir}/conf.d/"
+    $mod_dir               = "${httpd_dir}/modules-enabled/"
+    $vdir                  = "${httpd_dir}/sites-enabled/"
     $proxy_modules         = ['proxy', 'proxy_http']
     $mod_packages          = {
       'dev'        => ['libaprutil1-dev', 'libapr1-dev', 'apache2-prefork-dev'],
