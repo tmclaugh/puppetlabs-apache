@@ -48,6 +48,7 @@ class apache::params {
     $mod_dir               = "${httpd_dir}/mod.d"
     $vdir                  = "${httpd_dir}/vhosts.d"
     $conf_file             = 'httpd.conf'
+    $conf_file_tmpl        = 'httpd.conf-rhel.erb'
     $mod_packages          = {
       'dev'        => 'httpd-devel',
       'fcgid'      => 'mod_fcgid',
