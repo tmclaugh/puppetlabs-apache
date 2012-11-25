@@ -13,7 +13,7 @@
 # Sample Usage:
 #
 class apache (
-  $service_enable = true,
+  $service_enable = true
 ) {
   include apache::params
 
