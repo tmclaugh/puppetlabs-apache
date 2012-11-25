@@ -16,6 +16,7 @@ class apache (
   $default_mods = true,
   $service_enable = true,
   $serveradmin  = 'root@localhost',
+  $docroot = '/var/www/html',
   $sendfile     = false
 ) {
   include apache::params
@@ -43,6 +44,13 @@ class apache (
     notify  => Service['httpd'],
     require => Package['httpd'],
   }
+
+  file { "$docroot":
+    ensure  => directory,
+    notify  => Service['httpd'],
+    require => Package['httpd'],
+  }
+
 
   if $apache::params::conf_dir and $apache::params::conf_file {
     # Template uses:
