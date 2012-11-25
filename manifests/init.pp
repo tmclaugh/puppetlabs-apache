@@ -51,6 +51,7 @@ class apache (
       content => template('apache/vhost.conf.erb'),
       notify  => Service['httpd'],
       require => Package['httpd'],
+    }
   }
 
   if $apache::params::mod_dir {

@@ -1,4 +1,4 @@
 #
-# All proxy definitions go in <%= apache::params::vdir %>
+# All proxy definitions go in <%= scope.lookupvar('apache::params::vdir') %>
 
-Include <%= apache::params::vdir %>/*.conf
+Include <%= scope.lookupvar('apache::params::vdir') %>/*.conf
