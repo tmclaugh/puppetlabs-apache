@@ -13,11 +13,7 @@
 # Sample Usage:
 #
 class apache (
-  $default_mods = true,
   $service_enable = true,
-  $serveradmin  = 'root@localhost',
-  $docroot = '/var/www/html',
-  $sendfile     = false
 ) {
   include apache::params
 
@@ -45,29 +41,6 @@ class apache (
     require => Package['httpd'],
   }
 
-  file { "$docroot":
-    ensure  => directory,
-    notify  => Service['httpd'],
-    require => Package['httpd'],
-  }
-
-
-  if $apache::params::conf_dir and $apache::params::conf_file and $apache::params::conf_file_tmpl {
-    # Template uses:
-    # - $apache::params::user
-    # - $apache::params::group
-    # - $apache::params::conf_dir
-    # - $serveradmin
-    file { "${apache::params::conf_dir}/${apache::params::conf_file}":
-      ensure  => present,
-      content => template("apache/${apache::params::conf_file_tmpl}"),
-      notify  => Service['httpd'],
-      require => Package['httpd'],
-    }
-    if $default_mods == true {
-      include apache::mod::default
-    }
-  }
   if $apache::params::mod_dir {
     file { $apache::params::mod_dir:
       ensure  => directory,
