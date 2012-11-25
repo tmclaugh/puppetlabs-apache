@@ -220,14 +220,14 @@ Include mod.d/*.load
 
 <% if scope.lookupvar('apache::params::confd') %>
 #
-# Load config files from the config directory "<%= scope.lookupvar('apache::params::confd') %>/conf.d".
+# Load config files from the config directory "<%= scope.lookupvar('apache::params::confd') %>".
 #
 Include <%= scope.lookupvar('apache::params::confd') %>/*.conf
 <% end %>
 
 <% if scope.lookupvar('apache::params::vdir') %>
 #
-# Load config files from the vhost directory "<%= scope.lookupvar('apache::params::vdir') %>/vhosts.d".
+# Load config files from the vhost directory "<%= scope.lookupvar('apache::params::vdir') %>".
 #
 Include <%= scope.lookupvar('apache::params::vdir') %>/*.conf
 <% end %>
