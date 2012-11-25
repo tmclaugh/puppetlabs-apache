@@ -41,6 +41,18 @@ class apache (
     require => Package['httpd'],
   }
 
+  if $::osfamily == 'redhat' or $::operatingsystem == 'amazon' {
+    file {'httpd_vdir_conf':
+      ensure  => present,
+      path    => $apache::params::confd,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => template('apache/vhost.conf.erb'),
+      notify  => Service['httpd'],
+      require => Package['httpd'],
+  }
+
   if $apache::params::mod_dir {
     file { $apache::params::mod_dir:
       ensure  => directory,
