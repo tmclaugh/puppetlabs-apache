@@ -54,7 +54,7 @@ class apache (
     }
   }
 
-  if $::osfamily == 'debian' {
+  if $apache::params::mod_dir {
     file { $apache::params::mod_dir:
       ensure  => directory,
       require => Package['httpd'],
