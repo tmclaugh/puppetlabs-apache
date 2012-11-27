@@ -45,7 +45,6 @@ class apache::params {
     $httpd_dir             = '/etc/httpd'
     $conf_dir              = "${httpd_dir}/conf"
     $confd                 = "${httpd_dir}/conf.d"
-    $mod_dir               = "${httpd_dir}/mod.d"
     $vdir                  = "${httpd_dir}/vhosts.d"
     $conf_file             = 'httpd.conf'
     $mod_packages          = {
